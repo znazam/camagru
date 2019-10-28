@@ -1,14 +1,11 @@
-<?php
-require_once('config/database.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>home page</title>
-   <link rel = "stylesheet" type = "text/css" href = "main.css"/>
+   <link rel="stylesheet" href="../main.css">
+   <title>images</title>
 </head>
 <body>
    <div class="booth">
@@ -17,8 +14,6 @@ require_once('config/database.php');
        <canvas id="canvas" width="400" height="300"></canvas>
        <img id="photo" src="" alt=""></img>
    </div>
-   <button onclick>  function() {
-   }</button>
    <script type="text/javascript" src="photo.js"></script>
 </body>
 </html>
