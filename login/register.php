@@ -24,26 +24,13 @@
         </style>
     </head>
    <body>
-      <form>
-           <p>First Name  <input type="text" name="f_name"/></p>
-           <p>Last Name  <input  type="text" name="l_name"/></p>
+      <form action="../model/create_user.php" method="POST">
+           <p>First Name  <input type="text" name="firstname"/></p>
+           <p>Last Name  <input  type="text" name="lastname"/></p>
            <p>Email   <input type="email" name = "email"/></p>
            <p>Password   <input type="password" name="password"/></p>
-           <p>Retype Password  <input type="password" name="password"/></p>
-           <a href "login.php"><input type = "submit">
-				<?php	
-					include_once('../database.php');
-		    		$sql = "INSERT INTO MyGuests (firstname, lastname, email, passwd)
-					VALUES ('First Name', 'Last Name', 'Email', 'Password')";
-					try{
-						$conn->exec($sql);
-    					}
-					catch(PDOException $e)
-    					{
-    					echo $sql . "<br>" . $e->getMessage();
-    					}
-				?>
-			</a>
+           <p>Retype Password  <input type="password" name="confirm_password"/></p>
+           <input type = "submit" value="submit">
 			<br/><br/>
        </form>
    </body>

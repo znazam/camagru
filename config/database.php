@@ -1,16 +1,12 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "zaidnazam123";
-
+require('config/credentials.php');
+$conn = null;
 try {
-    $conn = new PDO("mysql:host=$host", $user, $pass);
+    $conn = new PDO("mysql:host=$host;dbname=$db_name", $user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE DATABASE IF NOT EXISTS mydbpdo";
-    $conn->exec($sql);
-    }
+}
 catch(PDOException $e)
-    {
+{
     echo $sql . "<br>" . $e->getMessage();
-    }
+}
 ?>
