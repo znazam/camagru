@@ -5,7 +5,7 @@
 			firstname VARCHAR(30) NOT NULL,
 			lastname VARCHAR(30) NOT NULL,
 			email VARCHAR(50) NOT NULL,
-			password VARCHAR(50) NOT NULL;
+			passwd VARCHAR(50) NOT NULL,
 			verify VARCHAR(50) NOT NULL,
 			reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
 	try{
@@ -13,7 +13,7 @@
 	}
 catch(PDOException $e)
     {
-    echo $sql . "<br>" . $e->getMessage();
+    echo $user . "<br>" . $e->getMessage();
     }
 
 $conn = null;	

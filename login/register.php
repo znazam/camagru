@@ -30,7 +30,20 @@
            <p>Email   <input type="email" name = "email"/></p>
            <p>Password   <input type="password" name="password"/></p>
            <p>Retype Password  <input type="password" name="password"/></p>
-           <a href "login.php"><input type = "submit"></a>
+           <a href "login.php"><input type = "submit">
+				<?php	
+					include_once('../database.php');
+		    		$sql = "INSERT INTO MyGuests (firstname, lastname, email, passwd)
+					VALUES ('First Name', 'Last Name', 'Email', 'Password')";
+					try{
+						$conn->exec($sql);
+    					}
+					catch(PDOException $e)
+    					{
+    					echo $sql . "<br>" . $e->getMessage();
+    					}
+				?>
+			</a>
 			<br/><br/>
        </form>
    </body>
