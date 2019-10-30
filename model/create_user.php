@@ -2,6 +2,7 @@
 	set_include_path("../");
 	require_once("config/database.php");
 
+	$username = $_POST['username'];
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$password = $_POST['password'];
@@ -29,8 +30,8 @@
 				if ($password == $confirm_password)
 				{
 					$hshpwd = password_hash($password, PASSWORD_BCRYPT);
-					$reg = $conn->prepare("INSERT INTO `user` (`firstname`, `lastname`, `email`, `passwd`) VALUES (?, ?, ?, ?)");
-					$reg->execute(array($firstname, $lastname, $email, $hshpwd));
+					$reg = $conn->prepare("INSERT INTO `user` (`username`, `firstname`, `lastname`, `email`, `passwd`) VALUES (?, ?, ?, ?, ?)");
+					$reg->execute(array($username, $firstname, $lastname, $email, $hshpwd));
 					header("location: /cama/login/login.php?success");
 				}
 				else

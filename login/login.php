@@ -29,8 +29,8 @@
         </style>
     </head>
    <body>
-      <center><form>
-           <p>Username: <input type="text" name="login"/></p>
+      <center><form action="../model/login_data.php" method="POST">
+           <p>Email address: <input type="text" name="email"/></p>
            <p>Password: <input  type="password" name="passwd"/></p>
            <a href = "../index.php"><input type = "submit"></a>
 			<br/><br/><br/>

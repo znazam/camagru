@@ -25,12 +25,13 @@
     </head>
    <body>
       <form action="../model/create_user.php" method="POST">
-           <p>First Name  <input type="text" name="firstname"/></p>
-           <p>Last Name  <input  type="text" name="lastname"/></p>
-           <p>Email   <input type="email" name = "email"/></p>
-           <p>Password   <input type="password" name="password"/></p>
-           <p>Retype Password  <input type="password" name="confirm_password"/></p>
-           <input type = "submit" value="submit">
+	  		<p>Username  <input type="text" name="username"/></p>
+        	<p>First Name  <input type="text" name="firstname"/></p>
+        	<p>Last Name  <input  type="text" name="lastname"/></p>
+        	<p>Email   <input type="email" name = "email"/></p>
+        	<p>Password   <input type="password" name="password"/></p>
+        	<p>Retype Password  <input type="password" name="confirm_password"/></p>
+        	<input type = "submit" value="submit">
 			<br/><br/>
        </form>
    </body>
