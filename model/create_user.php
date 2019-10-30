@@ -6,21 +6,47 @@
 	$lastname = $_POST['lastname'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
+	$confirm_password = $_POST['confirm_password'];
+
 
 	//--- validation ---
-
-	try {
-		$stmt = $conn->prepare("INSERT INTO `user` (`firstname`, `lastname`, `email`, `passwd`, `verify`) VALUES (?, ?, ?, ?, ?)");
-		$hshpwd = password_hash($password, PASSWORD_BCRYPT);
-		$val = "blah";
-		if (password_verify("Different", $hshpwd))
-			$val = "bleh";
-		$stmt->execute(array($firstname, $lastname, $email, $hshpwd, "asdiuhasduh"));
-		header("location: /cama/login/login.php?success=true&val=$val");
+	try
+	{	
+		if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($confirm_password))
+		{
+			header("location: /cama/login/register.php?error=fieldsempty");
+			return;
+		}
+		else
+		{
+			if (empty($password) || empty($confirm_password))
+			{
+				header("location: /cama/login/register.php?passwordmissing");
+				return;
+			}
+			else
+			{
+				if ($password == $confirm_password)
+				{
+					$hshpwd = password_hash($password, PASSWORD_BCRYPT);
+					$reg = $conn->prepare("INSERT INTO `user` (`firstname`, `lastname`, `email`, `passwd`) VALUES (?, ?, ?, ?)");
+					$reg->execute(array($firstname, $lastname, $email, $hshpwd));
+					header("location: /cama/login/login.php?success");
+				}
+				else
+				{
+					echo "passwords must be same";
+					header("location: /cama/login/register.php?passwordsmustbethesame");
+					return;
+				}
+			}
+		}
 	}
 	catch (PDOException $e)
 	{
-		echo "failed to edit stuff: ".$e->getMessage();
-		header("location: /cama/login/login.php?failure=true");
+		echo "failed to login: ".$e->getMessage();
+	} catch (Exception $e)
+	{
+		print($e->message);
 	}
 ?>

@@ -18,14 +18,13 @@
 			lastname VARCHAR(30) NOT NULL,
 			email VARCHAR(50) NOT NULL UNIQUE,
 			passwd VARCHAR(60) NOT NULL,
-			verify VARCHAR(60) NOT NULL,
 			verified BOOL NOT NULL DEFAULT 0,
 			reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
 	try{
-	$conn->exec($user);
+		$conn->exec($user);
 	}
-catch(PDOException $e)
-    {
-    echo $user . "<br>" . $e->getMessage();
-    }
+	catch(PDOException $e)
+	{
+		echo $user . "<br>" . $e->getMessage();
+	}
 ?>
