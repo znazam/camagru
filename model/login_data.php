@@ -6,20 +6,27 @@
 	$loginpass = $_POST['passwd'];
 
 try {
-		$stmt = $conn->prepare("SELECT * FROM `user` WHERE `email`=?");
+		$stmt = $conn->prepare("SELECT * FROM user WHERE email=?");
 		$stmt->execute(array($email));
-		$data = $stmt->fetchAll();
+		$data = $stmt->fetch();
 		var_dump($data);
-		if ($email == $data["email"] && password_verify($loginpass, $data["passwd"]))
-			header("Location: /cama/login/login.php?success=true");
-		else 
+		if($data)
 		{
-			header("Location: /cama/login/login.php?failuretoconnect");
-			echo "invalid email address or password";
-			return;
+			if (password_verify($loginpass, $data["passwd"])){
+				$_SESSION["login"] = "OK";
+				echo json_encode(["Status" => true]);
+				header("Location: /cama/login/login.php?connected");
+				exit();
+			}
+			else 
+			{
+				header("Location: /cama/login/login.php?failuretoconnect");
+				echo "invalid email address or password";
+				return;
+			}
+			$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
+			header("Location: /cama/login/login.php?success=true");
 		}
-		$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
-		header("Location: /cama/login/login.php?success=true");
 	}
 	catch (PDOException $e)
 	{
