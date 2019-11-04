@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <html>
     <head>
         <style>
@@ -29,11 +33,13 @@
         </style>
     </head>
    <body>
-      <center><form action="../model/login_data.php" method="POST">
+      <center><form action="../modal/login_data.php" method="POST">
            <p>Email address: <input type="text" name="email"/></p>
            <p>Password: <input  type="password" name="passwd"/></p>
            <a href = "../index.php"><input type = "submit"></a>
 			<br/><br/><br/>
+			<a href = "forgot.php">Forgot password?</a>
+			<br/>
 			<a href = "register.php">Don't have an account?  Sign Up now</a>
        </form></center>
    </body>

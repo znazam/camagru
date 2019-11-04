@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	set_include_path("../");
 	require('config/credentials.php');
 
@@ -20,6 +21,7 @@
 			email VARCHAR(50) NOT NULL UNIQUE,
 			passwd VARCHAR(60) NOT NULL,
 			verified BOOL NOT NULL DEFAULT 0,
+			token VARCHAR(60) NOT NULL,
 			reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
 	try{
 		$conn->exec($user);

@@ -1,7 +1,3 @@
-<?php
-	session_start();
-?>
-
 <html>
     <head>
         <style>
@@ -28,15 +24,10 @@
         </style>
     </head>
    <body>
-      <form action="../modal/create_user.php" method="POST">
-	  		<p>Username  <input type="text" name="username"/></p>
-        	<p>First Name  <input type="text" name="firstname"/></p>
-        	<p>Last Name  <input  type="text" name="lastname"/></p>
-        	<p>Email   <input type="email" name = "email"/></p>
-        	<p>Password   <input type="password" name="password"/></p>
-        	<p>Retype Password  <input type="password" name="confirm_password"/></p>
-        	<input type = "submit" value="submit">
-			<br/><br/>
+      <form action="../modal/verify.php" method="POST">
+	  		<p>Check your email for verification Code</p>
+			<p>Enter Verification Code Here <input type="Text" name="Code_Name"/></p>
+			<input type = "submit" value="submit" name="submit">
        </form>
    </body>
 </html>

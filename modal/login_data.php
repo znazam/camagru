@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	set_include_path("../");
 	require_once("config/database.php");
 
@@ -20,12 +21,12 @@ try {
 			}
 			else 
 			{
+				$_SESSION['error'] = "incorrect password or emailaddress";
 				header("Location: /cama/login/login.php?failuretoconnect");
-				echo "invalid email address or password";
 				return;
 			}
 			$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
-			header("Location: /cama/login/login.php?success=true");
+			header("Location: /cama/login/login.php");
 		}
 	}
 	catch (PDOException $e)
