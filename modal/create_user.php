@@ -48,7 +48,7 @@
 						$reg->execute(array($username, $firstname, $lastname, $email, $hshpwd, $random));
 						$email = $_POST['email'];
 						$subject = "verify your account";
-						$body = "Verify your account by clicking the Link: <a href = 'http://localhost:8081/cama/pages/checkmail.php'>link</a><br />and enter the code $random";
+						$body = "Verify your account by clicking the Link: <a href = 'http://localhost:8080/cama/pages/checkmail.php'>link</a><br />and enter the code $random";
 						var_dump($result);
 						$result = mail($email,$subject,$body);
 						header("location: /cama/pages/checkmail.php?success");

@@ -7,13 +7,12 @@ require_once('config/database.php');
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <style>
-		   background-image: url('https://thumbs.dreamstime.com/b/concept-anxiety-feeling-anxious-nervousness-due-to-stress-imminent-death-psychological-paranoia-as-161098186.jpg');
-		   background-size: cover;
-	</style>
+   <link rel="stylesheet" href="./main.css">
    <title>homepage</title>
 </head>
 <body>
-   
+   welcome to nothingness
+   <a href= "pages/images.php"><button>take image</button></a>
+   <things class="and" href="stuffses"></things>
 </body>
 </html>

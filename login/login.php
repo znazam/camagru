@@ -38,7 +38,7 @@
            <p>Password: <input  type="password" name="passwd"/></p>
            <a href = "../index.php"><input type = "submit"></a>
 			<br/><br/><br/>
-			<a href = "forgot.php">Forgot password?</a>
+			<a href = "../pages/forgot.php">Forgot password?</a>
 			<br/>
 			<a href = "register.php">Don't have an account?  Sign Up now</a>
        </form></center>

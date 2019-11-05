@@ -2,9 +2,9 @@
     <head>
         <style>
             body {
-            background-image: url('https://thumbs.dreamstime.com/b/scarecrow-stands-autumn-field-against-evening-sky-160915939.jpg');
+            background-image: url('https://thumbs.dreamstime.com/b/image-wolf-jumping-sky-moony-night-warewolf-light-161016922.jpg');
             background-repeat: no-repeat;
-           background-size: cover;
+		   background-size: cover;
         }
         p {
         color: black;
@@ -22,13 +22,11 @@
 			text-align: center;
 		}
 		</style>
-		<title>checkmail</title>
+		<title>newpassword</title>
     </head>
    <body>
-      <form action="../modal/verify.php" method="POST">
-	  		<p>Check your email for verification Code</p>
-			<p>Enter Verification Code Here <input type="Text" name="Code_Name"/></p>
-			<input type = "submit" value="submit" name="submit">
+      <form action="newpass.php" method="POST">
+	  		<p>Email was sent to your address</p>
        </form>
    </body>
 </html>

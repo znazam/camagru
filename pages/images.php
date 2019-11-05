@@ -14,6 +14,6 @@
        <canvas id="canvas" width="400" height="300"></canvas>
        <img id="photo" src="" alt=""></img>
    </div>
-   <script type="text/javascript" src="photo.js"></script>
+   <script type="text/javascript" src="../photo.js"></script>
 </body>
 </html>
