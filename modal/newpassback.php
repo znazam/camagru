@@ -10,13 +10,13 @@ $msg = "";
 if(isset($_POST['submit']))
 {
 	$email = $code['email'];
-	$for = $conn->prepare("UPDATE user set passwd = $password WHERE email = ?");
+	$for = $conn->prepare("UPDATE user set passwd = $hshpwd WHERE email = ?");
 	try
 	{
 		if (empty($password) || empty($newpass))
 		{
 			$_SESSION['error'] = "password fields need to be filled in";
-			header("location: /cama/pages/forgot.php?passwordmissing");
+			header("location: /cama/pages/newpass.php");
 			return;
 		}
 		else
@@ -25,8 +25,9 @@ if(isset($_POST['submit']))
 			{
 				if($email)
 				{
+					$hshpwd = password_hash($password, PASSWORD_BCRYPT);
 					$for->execute(array($email));
-					header("location: /cama/login.php");
+					header("location: /cama/login/login.php");
 				}
 				else
 				{

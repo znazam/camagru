@@ -27,8 +27,8 @@
    <body>
       <form action="login/login.php" method="POST">
 	  		<p>Email was sent to your address</p>
-			<p>Enter new password here<input type="Text" name="password"/></p>
-			<p>Re enter new password here<input type="Text" name="newpass"/></p>
+			<p>Enter new password here<input type="password" name="password"/></p>
+			<p>Re enter new password here<input type="password" name="newpass"/></p>
 			<input type = "submit" value="submit" name="submit">
        </form>
    </body>

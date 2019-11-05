@@ -50,7 +50,9 @@
 						$subject = "verify your account";
 						$body = "Verify your account by clicking the Link: <a href = 'http://localhost:8080/cama/pages/checkmail.php'></a><br />and enter the code $random";
 						var_dump($result);
-						$result = mail($email,$subject,$body);
+						$subject = "new password";
+						$headers = "MIME-Version: 1.0" . "\n";
+						$result = mail($email,$subject,$body,$headers);
 						header("location: /cama/pages/checkmail.php?success");
 					}
 					else
