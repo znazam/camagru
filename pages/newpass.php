@@ -25,7 +25,7 @@
 		<title>newpassword</title>
     </head>
    <body>
-      <form action="login/login.php" method="POST">
+      <form action="/cama/modal/newpassback.php" method="POST">
 	  		<p>Email was sent to your address</p>
 			<p>Enter new password here<input type="password" name="password"/></p>
 			<p>Re enter new password here<input type="password" name="newpass"/></p>

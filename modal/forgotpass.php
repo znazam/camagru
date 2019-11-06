@@ -13,8 +13,15 @@ if($email)
 	$subject = "new password";
 	$headers = "MIME-Version: 1.0" . "\n";
 	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
-	$body = 'enter new password by clicking the Link: <a href="http://localhost:8080/cama/pages/newpass.php">link</a><br />';
+	$body = "enter new password by clicking the Link: <a href=http://localhost:8080/cama/pages/newpass.php?email=$email>link</a><br />";
 	mail($email,$subject,$body,$headers);
 	header("location: /cama/pages/notifier.php");
+	return;
+}
+else
+{
+	$_SESSION['error'] = "email does not exist";
+	header("location: /cama/pages/forgot.php");
+	return;
 }
 ?>
