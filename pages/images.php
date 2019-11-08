@@ -9,10 +9,13 @@
 </head>
 <body>
    <div class="booth">
-       <video id="video" width="400" height="300"></video>
-       <a href="#" id="capture" class="booth-capture-button">take photo</a>
-       <canvas id="canvas" width="400" height="300"></canvas>
-       <img id="photo" src="" alt=""></img>
+    	<video id="video" width="400" height="300"></video>
+		<a href="#" id="capture" class="booth-capture-button">take photo</a>
+		<form method="post" action="../modal/images.php" enctype='multipart/form-data'>
+  		<input type='submit' value='Save image' name='upload'>
+		</form>
+    	<canvas id="canvas" width="400" height="300"></canvas>
+    	<img id="photo" src="" alt=""></img>
    </div>
    <script type="text/javascript" src="../photo.js"></script>
 </body>
