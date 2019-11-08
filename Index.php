@@ -11,7 +11,16 @@ require_once('config/database.php');
    <title>homepage</title>
 </head>
 <body>
-   welcome to nothingness
+<div class = "header">
+            <h1 style = "margin-top:1%;">Camagru</h1>
+        </div>
+        <div class = "menu_bar">
+            <ul>
+                <li class = "active" id = "logout"><a href = "/cama/login/login.php">Logout</a></li>
+                 </li>
+            </ul>
+        </div>
+        </br></br></br>
    <a href= "pages/images.php"><button>take image</button></a>
    <things class="and" href="stuffses"></things>
 </body>

@@ -16,7 +16,7 @@ try {
 			if (password_verify($loginpass, $data["passwd"])){
 				$_SESSION["login"] = "OK";
 				echo json_encode(["Status" => true]);
-				header("Location: /cama/login/login.php?connected");
+				header("Location: /cama/index.php");
 				exit();
 			}
 			else 
@@ -27,11 +27,13 @@ try {
 			}
 			$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
 			header("Location: /cama/login/login.php");
+			exit();
 		}
 	}
 	catch (PDOException $e)
 	{
 		echo "failed to login: ".$e->getMessage();
 		header("Location: /cama/login/login.php?failure");
+		exit();
 	}
 ?>
