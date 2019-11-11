@@ -15,7 +15,7 @@
   		<input type='submit' value='Save image' name='upload'>
 		</form>
     	<canvas id="canvas" width="400" height="300"></canvas>
-    	<img id="photo" src="" alt=""></img>
+    	<img id="photo" method = "POST" src="../modal/images.php" alt=""></img>
    </div>
    <script type="text/javascript" src="../photo.js"></script>
 </body>

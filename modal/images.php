@@ -3,6 +3,7 @@ session_start();
 set_include_path("../");
 require_once("config/database.php");
 
+$photo = $_POST['photo'];
 $target_dir = "/cama/uploads/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
@@ -38,6 +39,8 @@ if ($_FILES["file"]["size"] > 1000000)
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) 
 {
+	echo "something";
+	var_dump($_POST);
     echo "Only JPG, JPEG, PNG and GIF files are allowed. Please try again";
     $uploadOk = 0;
 }
