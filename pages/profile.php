@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['uid'])
+	header("location: /cama/login/login.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

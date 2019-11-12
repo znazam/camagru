@@ -4,8 +4,15 @@ set_include_path("../");
 require_once("config/database.php");
 
 $photo = $_POST['photo'];
-$target_dir = "/cama/uploads/";
-$target_file = $target_dir . basename($_FILES["file"]["name"]);
+// echo "photo".$photo;
+$photo = str_replace(" ", "+", $photo);
+$photo = base64_decode(str_replace("data:image/png;base64,", "", $photo));
+$photo = imagecreatefromstring($photo);
+
+$target_dir = "../uploads/";
+$target_file = $target_dir . "file.png";
+echo $target_file;
+imagepng($photo, $target_file);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 

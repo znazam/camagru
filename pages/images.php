@@ -11,12 +11,9 @@
    <div class="booth">
     	<video id="video" width="400" height="300"></video>
 		<a href="#" id="capture" class="booth-capture-button">take photo</a>
-		<form method="post" action="../modal/images.php" enctype='multipart/form-data'>
-  		<input type='submit' value='Save image' name='upload'>
-		</form>
+  		<input type='button' value='Save image' name='upload' id="upload">
     	<canvas id="canvas" width="400" height="300"></canvas>
-    	<img id="photo" method = "POST" src="../modal/images.php" alt=""></img>
    </div>
-   <script type="text/javascript" src="../photo.js"></script>
+   <script type="text/javascript" src="../js/photo.js"></script>
 </body>
 </html>

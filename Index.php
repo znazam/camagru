@@ -1,5 +1,6 @@
 <?php
 require_once('config/database.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +17,11 @@ require_once('config/database.php');
         </div>
         <div class = "menu_bar">
             <ul>
-                <li class = "active" id = "logout"><a href = "/cama/login/login.php">Logout</a></li>
+                <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php"><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></a></li>
                  </li>
             </ul>
         </div>
-        </br></br></br>
+        <br/><br/><br/>
    <a href= "pages/images.php"><button>take image</button></a>
    <things class="and" href="stuffses"></things>
 </body>

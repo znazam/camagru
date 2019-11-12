@@ -14,7 +14,7 @@ try {
 		if($data)
 		{
 			if (password_verify($loginpass, $data["passwd"])){
-				$_SESSION["login"] = "OK";
+				$_SESSION["uid"] = $data['id'];
 				echo json_encode(["Status" => true]);
 				header("Location: /cama/index.php");
 				exit();
