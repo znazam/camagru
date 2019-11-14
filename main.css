@@ -1,5 +1,5 @@
 body {
-	background-image: url('https://thumbs.dreamstime.com/b/concept-anxiety-feeling-anxious-nervousness-due-to-stress-imminent-death-psychological-paranoia-as-161098186.jpg');
+	background-image: url('https://images.unsplash.com/photo-1573487482166-09cd477f7b3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80');
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-color:black;
@@ -32,6 +32,6 @@ body {
 	height: 75px;
 }
 
-/* #canvas {
+#canvas {
 	display:none;
-} */
+}
