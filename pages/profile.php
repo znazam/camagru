@@ -14,9 +14,10 @@ if (!$_SESSION['uid'])
    <title>profile</title>
 </head>
 <body>
-		<form method="post" action="" enctype='multipart/form-data'>
+		<form method="post" action="images.php" enctype='multipart/form-data'>
   		<input type='file' name='file' />
   		<input type='submit' value='Save name' name='but_upload'>
+		<a href= "images.php"><button>take image</button></a>
 		</form>
 </body>
 </html>

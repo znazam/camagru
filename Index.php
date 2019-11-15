@@ -13,16 +13,16 @@ session_start();
 </head>
 <body>
 <div class = "header">
-            <h1 style = "margin-top:1%;">Camagru</h1>
+            <h1 style = "margin-top:1%; color: white">Camagru</h1>
         </div>
         <div class = "menu_bar">
             <ul>
-                <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php"><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></a></li>
+                <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
+   				<a href= "modal/yellowimages.php" style="margin-right: 40%; margin-top: 10%"><button><?php if ($_SESSION['uid']) : ?>profile<?php endif;?></button></a>
                  </li>
             </ul>
         </div>
         <br/><br/><br/>
-   <a href= "pages/images.php"><button>take image</button></a>
    <things class="and" href="stuffses"></things>
 </body>
 </html>

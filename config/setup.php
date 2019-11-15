@@ -33,8 +33,9 @@
 
 	$images = "CREATE TABLE IF NOT EXISTS images (
 		id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-		`name` varchar(200) NOT NULL,
-  		`image` longtext NOT NULL
+		`user` varchar(200) NOT NULL,
+  		`image` longtext NOT NULL,
+		`caption` longtext NOT NULL,
 		-- `description` varchar(255),
 		creationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
 	try
