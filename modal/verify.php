@@ -23,7 +23,7 @@ if(isset($_POST['submit']))
 		}
 		else
 		{
-			$_SESSION['error'] = "incorrect code... check mail";
+			$msg = "incorrect code... check mail";
 			header("location: /cama/pages/checkmail.php");
 		}
    }

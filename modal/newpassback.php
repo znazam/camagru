@@ -24,14 +24,14 @@ if(isset($_POST['submit']))
 			}
 			else
 			{
-				$_SESSION['error'] = "passwords must match";
+				$msg = "passwords must match";
 				header("location: /cama/pages/newpass.php");
 				return;
 			}
 		}
 		else
 		{
-			$_SESSION['error'] = "passwords fields must be filled";
+			$msg = "passwords fields must be filled";
 			header("location: /cama/pages/forgot.php");
 			return;
 		}

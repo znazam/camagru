@@ -2,6 +2,8 @@
 session_start();
 set_include_path("../");
 include 'config/database.php';
+
+$msg = "";
 $email = $_POST['email'];
 $for = $conn->prepare("SELECT * FROM user WHERE email=?");
 $for->execute(array($email));
@@ -20,7 +22,7 @@ if($email)
 }
 else
 {
-	$_SESSION['error'] = "email does not exist";
+	$msg = "email does not exist";
 	header("location: /cama/pages/forgot.php");
 	return;
 }

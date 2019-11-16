@@ -31,7 +31,7 @@
 		echo $user . "<br>" . $e->getMessage();
 	}
 
-	$images = "CREATE TABLE IF NOT EXISTS images (
+	$images = "CREATE TABLE IF NOT EXISTS `$db_name`.`images` (
 		id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		`user` varchar(200) NOT NULL,
   		`image` longtext NOT NULL,
@@ -40,7 +40,7 @@
 		creationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
 	try
 	{
-		$conn->exec($post);
+		$conn->exec($images);
 	}
 	catch(PDOException $e)
 	{

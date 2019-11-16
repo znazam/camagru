@@ -26,6 +26,7 @@
     </head>
    <body>
       <form action="/cama/modal/forgotpass.php" method="POST">
+	  		<?php echo $msg;  ?>
 	  		<p>Email will be sent to your address</p>
 			<p>Enter email address here<input type="Text" name="email"/></p>
 			<input type = "submit" value="send" name="send">

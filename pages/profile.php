@@ -14,10 +14,12 @@ if (!$_SESSION['uid'])
    <title>profile</title>
 </head>
 <body>
+		<?php echo $msg;  ?>
 		<form method="post" action="images.php" enctype='multipart/form-data'>
   		<input type='file' name='file' />
   		<input type='submit' value='Save name' name='but_upload'>
 		<a href= "images.php"><button>take image</button></a>
 		</form>
+		<li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
 </body>
 </html>

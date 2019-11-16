@@ -21,7 +21,7 @@ try {
 			}
 			else 
 			{
-				$_SESSION['error'] = "incorrect password or emailaddress";
+				$msg = "incorrect password or emailaddress";
 				header("Location: /cama/login/login.php?failuretoconnect");
 				return;
 			}

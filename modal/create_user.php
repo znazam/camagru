@@ -3,6 +3,7 @@
 	set_include_path("../");
 	require_once("config/database.php");
 
+	$msg = "";
 	$username = $_POST['username'];
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
@@ -19,7 +20,7 @@
 	{	
 		if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($confirm_password))
 		{
-			$_SESSION['error'] = "fields need to be filled";
+			$msg = "fields need to be filled";
 			header("location: /cama/login/register.php?error=fieldsempty");
 			return;
 		}
@@ -27,7 +28,7 @@
 		{
 			if( $existemail->rowCount() == 1 )
 			{
-				$_SESSION['error'] = "email is in use";
+				$msg = "email is in use";
 				header("location: /cama/login/register.php?emailexists");
 				return;
 			}
@@ -35,7 +36,7 @@
 			{
 				if (empty($password) || empty($confirm_password))
 				{
-					$_SESSION['error'] = "password fields need to be filled in";
+					$msg = "password fields need to be filled in";
 					header("location: /cama/login/register.php?passwordmissing");
 					return;
 				}
@@ -48,16 +49,17 @@
 						$reg->execute(array($username, $firstname, $lastname, $email, $hshpwd, $random));
 						$email = $_POST['email'];
 						$subject = "verify your account";
-						$body = "Verify your account by clicking the Link: <a href = 'http://localhost:8080/cama/pages/checkmail.php'></a><br />and enter the code $random";
+						$body = "Verify your account by clicking the Link: <a href = 'http://localhost:8080/cama/pages/checkmail.php'>link</a><br />and enter the code $random";
 						var_dump($result);
 						$subject = "new password";
 						$headers = "MIME-Version: 1.0" . "\n";
+						$headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
 						$result = mail($email,$subject,$body,$headers);
 						header("location: /cama/pages/checkmail.php?success");
 					}
 					else
 					{
-						$_SESSION['error'] = "passwords must be the same";
+						$msg = "passwords must be the same";
 						header("location: /cama/login/register.php?passwordsmustbethesame");
 						return;
 					}

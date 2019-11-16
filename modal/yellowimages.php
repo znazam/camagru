@@ -1,16 +1,11 @@
 <?php
     include "config/database.php";
     session_start();
-	//  if ($_SESSION['login'] == "")
-	// {
-	// 	header('Location: login.php');
-	// 	die();
-	//  }
     if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && isset($_POST['chosen_frame']) && $_POST['chosen_frame'] != "")
     {
-        if (!file_exists("images"))
+        if (!file_exists("uploads"))
         {
-            mkdir("images");
+            mkdir("../uploads");
         }
         if ($_POST['origin'] == "file")
         {
@@ -20,13 +15,10 @@
         }
         else
         {
-           // $username = $SESSION['login'];
             $rawData = $_POST['url'];
             $filteredData = explode(',', $rawData);
             $unencoded = base64_decode($filteredData[1]);
-            $randomName = rand(0, 99999);
-        
-            //Create the image 
+            $randomName = rand(0, 99999); 
             $fp = fopen("../uploads/".$randomName.'.jpg', 'w');
             fwrite($fp, $unencoded);
             fclose($fp);
@@ -86,7 +78,6 @@
         $postImageResult->bindParam(":user", $userid, PDO::PARAM_STR);
         $postImageResult->bindParam(":caption", $caption, PDO::PARAM_STR);
         $postImageResult->execute();
-       // header("Location: ../pages/gallery.php");
         die();
     }
     else if (isset($_POST['url']) && isset($_POST['post_pic']))
@@ -98,7 +89,7 @@
     <head>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <title>Upload picture</title>
-        <style>
+        <!-- <style>
             body
             {
                 text-align: center;
@@ -305,29 +296,19 @@
 				text-decoration: none;
 				cursor: pointer;
 			}
-        </style>
+        </style> -->
+		   <link rel="stylesheet" href="../main.css">
+
     </head>
     <body>
             <div id="header">
                 <a href="../index.php" style="color: blue; font-size: 300%">Homepage</a>
                 <div class="header_item">
-                    <!-- <?php
-                    //    include_once "./database/connect.php";
-                    //    $username = $_SESSION['username'];
-                        // if ($username != "")
-                        // {
-                            // echo "<p id='web_name'>"."Welcome ".$username."</p>";
-                        // }
-                        // else
-                        // {
-                            // echo "<p id='web_name'>Camagru</p>";
-                        // }
-                    // ?> -->
                 </div>
                 <div class="header_item">
-                    <a href="../pages/gallery.php"><img class="user_icon" src="https://www.shareicon.net/download/2016/11/09/851666_user_512x512.png"></a>
+                    <a href="../pages/gallery.php"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
                     <div class="header_item" style="display: inline; width: 30px;">
-                        <img class="user_icon" onclick="logOut()" src="https://www.freeiconspng.com/uploads/shutdown-icon-28.png">
+                    <a href="../login/logout.php"><img class="user_icon" onclick="logOut()" src="https://www.freeiconspng.com/uploads/shutdown-icon-28.png"></a>
                     </div>
                 </div>
             </div>
@@ -351,41 +332,13 @@
                     </form>
                 </div>
                 <div id="frames">
-                    <div class="frame" id="none"></div>
-                    <img class="frame" id="cat1" src="../uploads/cat-png-gray-cat-png-image-347.png">
-                    <img class="frame" id="dragon" src="../uploads/doggy.png">
-                    <img class="frame" id="cupid" src="../uploads/ball.png">
+                    <img class="frame" id="lips" src="../uploads/Lips-Sticker-01_large.jpg">
+                    <img class="frame" id="catpaws" src="../uploads/6733.png">
+                    <img class="frame" id="vendetta" src="../uploads/Trends-on-Wall-Vendetta-Mask-SDL956351653-1-9a5f0.jpg">
+                    <img class="frame" id="mickey" src="../uploads/Married-To-The-Mob-Birdie-Sticker-_261461.jpg">
                 </div>
             </div>
             <div id="side">
-            <?php
-            //      include_once "..database/connect.php";
-            //      $username = $_SESSION['username'];
-            //      $getPostQuery = "SELECT * FROM `post` WHERE `username`=? ORDER BY `id` DESC";
-            //      $getPostResult = $conn->prepare($getPostQuery);
-            //      $getPostResult->execute([$username]);
-            //      if ($getPostResult->rowCount())
-            //      {
-            //          while ($post = $getPostResult->fetch())
-            //          {
-            //              if (file_exists($post['image_path']))
-			// 			{
-			// 	 			$image_path = $post['image_path'];
-			// 	 		}
-			// 	 		else
-			// 	 		{
-			// 	 			$image_path = "../uploads/image_not_found.jpg";
-			// 	 		}
-            //             $id = $post['id'];
-            //              $deleteId = "delete".$id;
-            //              $imageId = "image".$id;
-            //              echo    "<div style='align: center; background-color: grey; padding: 2px; border-radius: 2px;'>
-            //                         <img id=$imageId class='grid_img' src='".$image_path."'>
-            //                          <span class='delete' id='".$deleteId."' onclick=deletePost('$id') title='Delete post'>&times</span>;
-            //                      </div>";
-            //          }
-            //     }
-            // ?>
             </div>
         </div>
         <div id="snackbar"></div>
@@ -405,10 +358,10 @@
                 const re_shoot = document.getElementById('take_another_one');
                 const post_it = document.getElementById('post_pic');
                 const url = document.getElementById('url');
-                const cat = document.getElementById('cat1');
-                const dragon = document.getElementById('dragon');
-                const cupid = document.getElementById('cupid');
-                const none = document.getElementById('none');
+                const cat = document.getElementById('catpaws');
+                const vendetta = document.getElementById('vendetta');
+                const lips = document.getElementById('lips');
+                const mickey = document.getElementById('mickey');
                 var context = canvas.getContext('2d');
                 const frame = document.getElementById('omunye');
                 const chosenFrame = document.getElementById('chosen_frame');
@@ -443,8 +396,7 @@
             else
             {
                 alert('getUserMedia() is not supported by your browser');
-            }
-                //frames start
+			}
                 cat.addEventListener("click", function()
                 {
                     if (video.style.display != "none" || origin.value == "file")
@@ -454,31 +406,33 @@
                         frame.style.display = "block";
                     }
                 });
-                dragon.addEventListener("click", function()
+                vendetta.addEventListener("click", function()
                 {
                     if (video.style.display != "none" || origin.value == "file")
                     {
-                        frame.src = dragon.src;
-                        chosenFrame.value = dragon.src;
+                        frame.src = vendetta.src;
+                        chosenFrame.value = vendetta.src;
                         frame.style.display = "block";
                     }
                 });
-                cupid.addEventListener("click", function()
+                lips.addEventListener("click", function()
                 {
                     if (video.style.display != "none" || origin.value == "file")
                     {
-                        frame.src = cupid.src;
-                        chosenFrame.value = cupid.src;
+                        frame.src = lips.src;
+                        chosenFrame.value = lips.src;
                         frame.style.display = "block";
                     }
                 });
-                none.addEventListener("click", function()
+                mickey.addEventListener("click", function()
                 {
-                    frame.style.display = "none";
-                    chosenFrame.value = "";
+					if (video.style.display != "none" || origin.value == "file")
+                    {
+                        frame.src = mickey.src;
+                        chosenFrame.value = mickey.src;
+                        frame.style.display = "block";
+                    }
                 });
-                //frames end
-                //When you select a picture
                 var loadFile = function(event)
                 {
                     if (event.target.files[0])ﬁ
@@ -487,7 +441,6 @@
                         canvas.height = video.videoHeight;
                         img.src = URL.createObjectURL(event.target.files[0]);
                         canvas.innerHTML = "<img src='" + img.src + "'>";
-                        //canvas.style.display = "block";
                         url.value = canvas.toDataURL('image/jpeg');
                         img.style.display = "block";
                         video.style.display = "none";
@@ -527,7 +480,6 @@
 					}})
 				}
         </script>
-
         <div id="footer">
             <p id="f_msg">This website is proundly provided to you by Zaid Nazam</p>
             <p id="cr">znazam 2019</p>

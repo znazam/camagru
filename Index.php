@@ -18,7 +18,8 @@ session_start();
         <div class = "menu_bar">
             <ul>
                 <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
-   				<a href= "modal/yellowimages.php" style="margin-right: 40%; margin-top: 10%"><button><?php if ($_SESSION['uid']) : ?>profile<?php endif;?></button></a>
+				<?php if ($_SESSION['uid']) : ?><a href= "modal/yellowimages.php" style="margin-right: 40%; margin-top: 10%"><button>profile</button></a><?php endif;?>
+				<?php if ($_SESSION['uid']) : ?><a href= "pages/gallery.php" style="margin-right: 10%; margin-top: 10%"><button>gallery</button></a><?php endif;?>
                  </li>
             </ul>
         </div>
