@@ -1,5 +1,6 @@
 <?php
-    include "config/database.php";
+	set_include_path("../");
+    include "/cama/config/database.php";
     session_start();
     if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && isset($_POST['chosen_frame']) && $_POST['chosen_frame'] != "")
     {
@@ -72,8 +73,8 @@
         imagedestroy($dest);
         imagedestroy($src);
         
-        $postImageQuery = "INSERT INTO `images`(`image`, `user`, `caption`) VALUES(?, ?, ?)";
-        $postImageResult = $dbh->prepare($postImageQuery);
+        $postImageQuery = "INSERT INTO `$db_name`.`images`(`image`, `user`, `caption`) VALUES(?, ?, ?)";
+        $postImageResult = $db_name->prepare($postImageQuery);
         $postImageResult->bindParam(":image", $newImageName, PDO::PARAM_STR);
         $postImageResult->bindParam(":user", $userid, PDO::PARAM_STR);
         $postImageResult->bindParam(":caption", $caption, PDO::PARAM_STR);
@@ -87,218 +88,8 @@
 ?>
 <html>
     <head>
-        <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <title>Upload picture</title>
-        <!-- <style>
-            body
-            {
-                text-align: center;
-            }
-            #side
-            {
-                background-color: black;
-            }
-            #header
-			{
-				position: fixed;
-				top: 0px;
-				left: 0px;
-				background-color: #A9A9A9;
-				width: 100%;
-				padding: 10px;
-				box-shadow: 0px 8px 16px 0px grey;
-				display: inline-grid;
-  				grid-template-columns: auto auto auto;
-				text-align: center;
-				z-index: 1;
-			}
-			.web_icon
-			{
-				width: 50px;
-				display: inline;
-			}
-			#search_icon
-			{
-				width: 30px;
-				margin-top: 5px;
-				margin-left: 5px;
-			}
-			.user_icon
-			{
-				width: 50px;
-				display: inline;
-			}
-			.header_item
-			{
-				text-align: center;
-			}
-            #screenshot
-            {
-                display: none;
-                max-height: 100px;
-            }
-            #vid
-            {
-                width: 600px;
-                display: block;
-            }
-            #captured_one
-            {
-                display: none;
-                width: 600px;
-            }
-            #omunye
-            {
-                display: none;
-                position: absolute;
-                top: 120px;
-                width: 200px;
-            }
-            #take_pic
-            {
-                position: relative;
-                left: 265px;
-                background-color: rgba(255,255,255,0.7);
-                border-radius: 100%;
-                padding: 10px;
-                border: 5px solid RoyalBlue;
-                height: 60px;
-                width: 60px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            }
-            #take_another_one
-            {
-                position: relative;
-                top: 10px;
-                left: 340px;
-                background-color: rgba(255,255,255,0.7);
-                border-radius: 100%;
-                padding: 10px;
-                border: 5px solid green;
-                height: 25px;
-                width: 25px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            }
-            #post_pic
-            {
-                position: relative;
-                height: 50px;
-                background-color: rgba(0,0,0,0.7);
-                color: white;
-                padding: 10px;
-                border: 3px solid white;
-                border-radius: 10px;
-                top: -20px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            }
-            #img_caption
-            {
-                position: relative;
-                width: 500px;
-                height: 50px;
-                margin-top: 10px;
-				border-radius: 5px;
-				border: 2px solid #1E90FF;
-            }
-            #main
-            {
-                padding: 10px;
-                border-radius: 10px;
-                top: 120px;
-                left: 50px;
-                text-align: left;
-                display: grid;
-  				grid-template-columns: auto auto;
-                grid-gap: 20px;
-                margin-bottom: 20px;
-                min-width: 800px;
-            }
-            #side
-            {
-                top: 120px;
-                right: 50px;
-                border-radius: 10px;
-                display: grid;
-  				grid-template-columns: auto auto auto;
-                padding: 10px;
-                grid-gap: 10px;
-				overflow: auto;
-                border: 5px solid grey;
-                min-width: 100px;
-            }
-            .grid_img
-            {
-                width: 100%;
-            }
-            #frames
-            {
-                display: grid;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                border-radius: 10px;
-                height: 98%;
-				overflow: auto;
-  				grid-template-columns: auto auto;
-                grid-gap: 5%;
-                padding: 10px;
-                min-width: 100px;
-            }
-            #lay
-            {
-                display: grid;
-                grid-template-columns: auto auto;
-                grid-gap: 10px;
-                margin-top: 120px;
-                min-width: 500px;
-                min-height: 500px;
-            }
-            .frame
-            {
-                width: 100%;
-                background-color: white;
-                border-radius: 10px;
-            }
-            #cr
-            {
-                display: inline;
-                float: right;
-                margin-right: 10px;
-            }
-            #f_msg
-            {
-                display: inline;
-                float: left;
-                margin-left: 10px;
-            }
-            #b_image
-            {
-                background-color: black;
-                padding: 5px;
-                color: white;
-                border-radius: 3px;
-            }
-			#web_name
-			{
-				font-style: bold;
-				color: white;
-				font-family: monospace;
-				font-size: 18px;
-			}
-			.delete
-			{
-				color: #DD0000;
-				font-size: 28px;
-				font-weight: bold;
-			}
-			.delete:hover,
-			.delete:focus
-            {
-				color: red;
-				text-decoration: none;
-				cursor: pointer;
-			}
-        </style> -->
-		   <link rel="stylesheet" href="../main.css">
-
+		<link rel="stylesheet" href="../main.css">
     </head>
     <body>
             <div id="header">
