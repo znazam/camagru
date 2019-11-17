@@ -68,16 +68,16 @@ require_once("config/database.php");
 // 	}
 // }
 
-if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && isset($_POST['chosen_frame']) && $_POST['chosen_frame'] != "")
+if ((isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "") || (isset($_POST['chosen_frame']) && $_POST['chosen_frame'] != ""))
 {
-	if (!file_exists("uploads"))
+	if (!file_exists("../uploads"))
 	{
 		mkdir("../uploads");
 	}
 	if ($_POST['origin'] == "file")
 	{
-		$image = "/cama/uploads/".$_FILES['src']['name'];
-		$target = "/cama/uploads/".basename($_FILES['src']['name']);
+		$image = "../uploads/".$_FILES['src']['name'];
+		$target = "../uploads/".basename($_FILES['src']['name']);
 		move_uploaded_file($_FILES["src"]["tmp_name"], $target);
 	}
 	else
@@ -87,10 +87,10 @@ if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && 
 		$filteredData = explode(',', $rawData);
 		$unencoded = base64_decode($filteredData[1]);
 		$randomName = rand(0, 99999); 
-		$fp = fopen("/cama/uploads/".$randomName.'.jpg', 'w');
+		$fp = fopen("../uploads/".$randomName.'.jpg', 'w');
 		fwrite($fp, $unencoded);
 		fclose($fp);
-		$image = "/cama/uploads/".$randomName.".jpg";
+		$image = "../uploads/".$randomName.".jpg";
 	}
 	$srcPath = $_POST['chosen_frame'];
 	if (substr($image, -3) == "jpg")
@@ -117,14 +117,14 @@ if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && 
 	$time = time();
 	if (substr($image, -3) == "gif")
 	{
-		$newImageName = "/cama/uploads/".$username."_".date("Y_m_d", $time)."_".$time.".gif";
+		$newImageName = "../uploads/".$username."_".date("Y_m_d", $time)."_".$time.".gif";
 	}
 	else
 	{
-		$newImageName = "/cama/uploads/".$username."_".date("Y_m_d", $time)."_".$time.".jpg";
+		$newImageName = "../uploads/".$username."_".date("Y_m_d", $time)."_".$time.".jpg";
 	}
 	list($srcWidth, $srcHeight) = getimagesize($srcPath);
-	//imagecolortransparent($src, imagecolorat($src, 0, 0));
+	imagecolortransparent($src, imagecolorat($src, 0, 0));
 	imagecopymerge($dest, $src, $srcXpos, $srcYpos, $srcXcrop, $srcYcrop, $srcWidth, $srcHeight, 100);
 	if (substr($image, -3) == "gif")
 	{
@@ -147,7 +147,7 @@ if (isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "" && 
 	$postImageResult->bindParam(":user", $userid, PDO::PARAM_STR);
 	$postImageResult->bindParam(":caption", $caption, PDO::PARAM_STR);
 	$postImageResult->execute();
-	header("Location: ../gallery.php");
+	header("Location: ../pages/gallery.php");
 	die();
 }
 else if (isset($_POST['url']) && isset($_POST['post_pic']))

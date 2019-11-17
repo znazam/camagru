@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="../main.css">
     </head>
     <body>
+		<?php echo $msg;?>
             <div id="header">
                 <a href="../index.php" style="color: blue; font-size: 300%">Homepage</a>
                 <div class="header_item">
@@ -35,10 +36,10 @@
                     </form>
                 </div>
                 <div id="frames">
-                    <img class="frame" id="lips" src="../uploads/Lips-Sticker-01_large.jpg">
+                    <img class="frame" id="lips" src="../uploads/d57d226a693dc563b9fe83ed3457d101.png">
                     <img class="frame" id="catpaws" src="../uploads/6733.png">
-                    <img class="frame" id="vendetta" src="../uploads/Trends-on-Wall-Vendetta-Mask-SDL956351653-1-9a5f0.jpg">
-                    <img class="frame" id="mickey" src="../uploads/Married-To-The-Mob-Birdie-Sticker-_261461.jpg">
+                    <img class="frame" id="vendetta" src="../uploads/516b6f_7503d2b992c64e14b72c9a742c92a57a_mv2.png">
+                    <img class="frame" id="mickey" src="../uploads/d7t8j10-1e36b0eb-dcd0-459d-ab30-4ebd04dd5730.png">
                 </div>
             </div>
             <div id="side">
