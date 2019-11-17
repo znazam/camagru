@@ -110,15 +110,7 @@ if ((isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "") |
 	$srcYpos = 0;
 	$srcXcrop = 0;
 	$srcYcrop = 0;
-
-
-	// $stmt = $conn->prepare("SELECT * FROM user WHERE username=?");
-	// $stmt->execute(array($email));
-	// $data = $stmt->fetchAll();
-	// var_dump($data);
 	$username = $_SESSION['username'];
-	// $username = $data['username'];
-	echo "username is :$username";
 	$userid = $_SESSION['uid'];
 	$caption = $_POST['caption'];
 	$time = time();
@@ -151,10 +143,10 @@ if ((isset($_POST['url']) && isset($_POST['post_pic']) && $_POST['url'] != "") |
 	$postImageQuery = "INSERT INTO `$db_name`.`images`(`image`, `user`, `caption`) VALUES(:image, :user, :caption)";
 	$postImageResult = $conn->prepare($postImageQuery);
 	$postImageResult->bindParam(":image", $newImageName, PDO::PARAM_STR);
-	$postImageResult->bindParam(":user", $username, PDO::PARAM_STR);
+	$postImageResult->bindParam(":user", $userid, PDO::PARAM_STR);
 	$postImageResult->bindParam(":caption", $caption, PDO::PARAM_STR);
 	$postImageResult->execute();
-	//header("Location: ../pages/gallery.php");
+	header("Location: ../pages/gallery.php");
 	die();
 }
 else if (isset($_POST['url']) && isset($_POST['post_pic']))

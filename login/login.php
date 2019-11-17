@@ -33,7 +33,8 @@
         </style>
     </head>
    <body>
-      <center><form action="../modal/login_data.php" method="POST">
+	  <center><form action="../modal/login_data.php" method="POST">
+			<?php echo $msg;?>
            <p>Email address: <input type="text" name="email"/></p>
            <p>Password: <input  type="password" name="passwd"/></p>
            <a href = "../index.php"><input type = "submit"></a>

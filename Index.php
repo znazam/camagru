@@ -9,7 +9,7 @@ session_start();
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="./main.css">
-   <title>homepage</title>
+   <title>index</title>
 </head>
 <body>
 <div class = "header">
@@ -18,12 +18,11 @@ session_start();
         <div class = "menu_bar">
             <ul>
                 <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
-				<?php if ($_SESSION['uid']) : ?><a href= "pages/images.php" style="margin-right: 40%; margin-top: 10%"><button>profile</button></a><?php endif;?>
+				<?php if ($_SESSION['uid']) : ?><a href= "pages/profile.php" style="margin-right: 40%; margin-top: 10%"><button>Profile</button></a><?php endif;?>
 				<?php if ($_SESSION['uid']) : ?><a href= "pages/gallery.php" style="margin-right: 10%; margin-top: 10%"><button>gallery</button></a><?php endif;?>
                  </li>
             </ul>
         </div>
         <br/><br/><br/>
-   <things class="and" href="stuffses"></things>
 </body>
 </html>

@@ -2,9 +2,9 @@
 	session_start();
 	set_include_path("../");
 	require_once("config/database.php");
-
 	$email = $_POST['email'];
 	$loginpass = $_POST['passwd'];
+	$msg = "";
 
 try {
 		$stmt = $conn->prepare("SELECT * FROM user WHERE email=?");
@@ -16,13 +16,14 @@ try {
 			if (password_verify($loginpass, $data["passwd"])){
 				$_SESSION["uid"] = $data['id'];
 				$_SESSION["username"] = $data['username'];
+				$_SESSION["email"] = $data['email'];
 				echo json_encode(["Status" => true]);
 				header("Location: /cama/index.php");
 				exit();
 			}
 			else 
 			{
-				$msg = "incorrect password or emailaddress";
+				echo "incorrect password or emailaddress";
 				header("Location: /cama/login/login.php?failuretoconnect");
 				return;
 			}
