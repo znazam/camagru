@@ -125,7 +125,7 @@ mickey.addEventListener("click", function()
 });
 var loadFile = function(event)
 {
-	if (event.target.files[0])ﬁ
+	if (event.target.files[0])
 	{
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;

@@ -4,10 +4,8 @@ if($_SESSION['username'] != TRUE){
     header("location: ../login/login.php");}
     ?>
     <?php
-// Include the database configuration file
 include '../config/database.php';
 
-// Get images from the database
 $ID = $_SESSION['uid'];
 $query = $conn->query("SELECT * FROM `images` WHERE `id` = $ID");
 $array = $query->fetchall();

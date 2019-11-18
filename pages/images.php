@@ -26,8 +26,8 @@
                     <button id="take_pic"></button>
                     <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/refresh-01-512.png" id="take_another_one">
                     <form action ="/cama/modal/images.php" id="submit_form" method="POST" enctype="multipart/form-data">
-                        <input id="b_image" type="file" value="browse" accept="image/*" name="b_pic"  onchange="loadFile(event)" style="display: none;">
-                        <p><label for="b_image" style="cursor: pointer; background-color: 191970; padding: 10px; border-radius: 5px; color: white;">Click here to choose image</label></p>
+                        <!-- <input id="b_image" type="file" value="browse" accept="image/*" name="b_pic"  onchange="loadFile(event)" style="display: none;"> -->
+                        <p><a for="b_image" href="uploadingit.php"style="cursor: pointer; background-color: 191970; padding: 10px; border-radius: 5px; color: white;">Click here to choose image</a></p>
                         <textarea id="img_caption" type="text" name="caption"></textarea>
                         <input id="post_pic" name="post_pic" type="submit" value="Upload">
                         <input id="url" name="url" type="text" style="display: none;">
