@@ -1,45 +1,38 @@
 <?php
-// Include the database configuration file
-include '../config/database.php';
-$statusMsg = '';
-session_start();
-$username = $_SESSION['username'];
-// File upload path
-$targetDir = "uploads/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-$userid = $_SESSION['uid'];
-$caption = $_POST['caption'];
-
-
-if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"]))
-{
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
-	if(in_array($fileType, $allowTypes))
+	session_start();
+	set_include_path ("../");
+	require_once("config/database.php");
+	
+	if(isset($_POST['postlike']))
 	{
-		if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath))
+		echo "something";
+		// $ver = $conn->prepare("SELECT id FROM images WHERE `image`=?");
+		// $ver->execute(array($imageid));
+		// $code = $ver->fetch();
+		$statement = $conn->prepare("INSERT INTO `$db_name`.`likes`(`uploaderID`, `postID`) VALUES (:user, :post)");
+		$statement->bindParam(":user", $_POST['uid']);
+		$statement->bindParam(":post", $_POST['id']);
+		try
 		{
-			$insert = "INSERT INTO $db_name.`image`(`image`, `user`, `caption`) VALUES(:image, :user, :caption)";
-			$insert = $db->prepare($insert);
-            $insert->bindParam(":image", $targetFilePath, PDO::PARAM_STR);
-            $insert->bindParam(":user", $userid, PDO::PARAM_STR);
-            $insert->bindParam(":caption", $caption, PDO::PARAM_STR);
-            $insert->execute();
-            if($insert){
-                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-            }else{
-                $statusMsg = "File upload failed, please try again.";
-            } 
-        }else{
-            $statusMsg = "Sorry, there was an error uploading your file.";
-        }
-    }else{
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-    }
-}else{
-    $statusMsg = 'Please select a file to upload.';
-}
-// Display status message
-echo $statusMsg;
+			$statement->execute();
+			heaader("Location: ../pages/gallery");
+		}
+		catch(PDOExeption $e)
+		{
+			echo "Error: ".$e->message();
+		}
+	}
+	
+	//dislike it
+	set_include_path ("../");
+	require 'config/setup.php';
+	$statement = $conn->prepare("DELETE FROM `likes` WHERE uploaderID = :user AND postID = :post");
+	$statement->bindParam(":user", $_POST['user']);
+	$statement->bindParam(":post", $_POST['post']);
+	$statement->execute();
+	
+	//display likes
+	$statement = $conn->prepare("SELECT COUNT(*) FROM posts;");
+	$statement->execute();
+	print($statement->fetch()[0]);
 ?>

@@ -46,4 +46,32 @@
 	{
 		echo "Failed to create post table: " . $e->getMessage();
 	}
+
+	$comment = "CREATE TABLE IF NOT EXISTS `$db_name`.`comments` (
+		id int NOT NULL AUTO_INCREMENT,
+		uploaderID int NOT NULL,
+		postID int NOT NULL,
+		content varchar(1000) NOT NULL,
+		creationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		PRIMARY KEY (id))";
+	try
+	{
+	$conn->exec($comment);
+	}
+	catch(PDOException $e)
+	{
+	echo "Failed to create comment table: " . $e->getMessage();
+	}
+
+	$like = "CREATE TABLE IF NOT EXISTS `$db_name`.`likes` (
+		uploaderID int NOT NULL,
+		postID varchar(5) NOT NULL)";
+	try
+	{
+	$conn->exec($like);
+	}
+	catch(PDOException $e)
+	{
+	echo "Failed to create like table: " . $e->getMessage();
+	}
 ?>

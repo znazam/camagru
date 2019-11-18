@@ -59,6 +59,7 @@ echo "awrextcfyvguh";
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="../js/photo.js"></script>
 <a href="https://www.facebook.com"><img src="https://en.facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" height="50px" width="50px"></a>
 <hr>
 <div id="footer">
