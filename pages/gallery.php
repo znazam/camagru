@@ -69,7 +69,7 @@
 					?>
 					<div class="booth" style="width:600px">
 						<form action ="/cama/modal/gallery.php?returnto=<?=$_GET['page']?>" id="submit_form" method="POST" enctype="multipart/form-data">
-							<img src="<?=$row['image']?>" style="width: 600px; height:500%"/>
+							<img src="<?=$row['image']?>" style="width: 500px; height:400%"/>
 							<p style="color: white"><?php echo "Likes: "."$like_count";?></p>
 							<?php if ($_SESSION['uid']) : ?><textarea id="img_caption" type="text" name="comment"></textarea><?php endif;?>
 							<?php if ($_SESSION['uid']) : ?><button name="postlike" style="width: 10%; height: 50px; margin-top: -70%"><img id="like" style="width: 130%; height: 50px; margin-left: -15%; margin-top: -10%" src="https://i.ytimg.com/vi/sx6Bx29lFWg/hqdefault.jpg"/></button><?php endif;?>

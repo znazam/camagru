@@ -1,6 +1,6 @@
 <?php
-require('../modal/profile.php');
-echo "awrextcfyvguh";
+session_start();
+include '../config/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ echo "awrextcfyvguh";
 		<div class="header_item">
 			<a href="../index.php" style="color: blue; font-size: 300%; margin-left: 10%">HOMEPAGE</a>
 			<a href="../pages/gallery.php?page=1" style="margin-left: 20%"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
-			<a href="profileup.php" style="margin-left: 10%"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
+			<a href="profileup.php" style="margin-left: 10%">Update Details?</a>
 			<a href="images.php" style="margin-left: 10%"><img src="https://www.creativefabrica.com/wp-content/uploads/2018/10/Camera-logo-by-DEEMKA-STUDIO-580x406.jpg" width="40" height="40"></a>
 			<a href="../login/logout.php" style="margin-left: 50%; margin-bottom: 100%"><img class="user_icon" onclick="logOut()" src="https://www.freeiconspng.com/uploads/shutdown-icon-28.png"></a>
 		</div>
@@ -31,31 +31,46 @@ echo "awrextcfyvguh";
 	<div class="view-form">
 		<div class="row">
 			<?php
-			try {
-				$userid = $_SESSION['uid'];
+			if (!isset($_GET['page']))
+				$_GET['page'] = 1;
+			$offset = 5 * ($_GET['page'] - 1);
+
+			$userid = $_SESSION['uid'];
+			$statement = $conn->prepare("SELECT COUNT(*) FROM images WHERE user = $userid");
+			$statement->execute();
+			$post_count = $statement->fetch()[0];
+			$post_count;
+
+			$rc = $conn->prepare("SELECT * FROM `images` WHERE user = $userid ORDER BY `creationDate` DESC LIMIT 5 OFFSET :offset");
+			$rc->bindParam(":offset", $offset, PDO::PARAM_INT);
+			$rc->execute();
+			$row_count = $rc->rowCount();
+
+			if(($offset + 5) < $post_count){
+				echo "<a href='?page=".($_GET['page']+1)."'>  Next</a>";
+			}
+			if($offset >= 2){
+				echo "<a href='?page=".($_GET['page']-1)."'><br>Prev</a>";
+			}
+			if($rc->rowCount() > 0)
+			{
+				while($row=$rc->fetch(PDO::FETCH_ASSOC))
+				{
 				$stmt = $conn->prepare("SELECT * FROM `images` where user = $userid");
 				$stmt->execute();
-				if($stmt->rowCount() > 0)
-				{
-					while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-					{
-						?>
-						<div class="whole">
-								<img src="<?=$row['image']?>" width="2000000px"/>
-						</div>
-						<?php
-					}
+				?>
+					<div class="booth" style="width:600px">
+						<form action ="/cama/modal/profile.php?returnto=<?=$_GET['page']?>" id="submit_form" method="POST" enctype="multipart/form-data">
+							<img src="<?=$row['image']?>" style="width: 600px; height:500%"/>
+							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="post_id" value="<?php echo $row['id'];?>"/><?php endif;?>
+							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="user_id" value="<?php echo $row['user'];?>"/><?php endif;?>
+							<button type="submit" name="delete">Delete</button>
+						</form>
+					</div>
+					<?php
 				}
-			} catch (Exception $e) {
-				echo $e->getMessage();
 			}
 			?>
-
-		<div class="col">
-			<p><?php echo $row['username']?></p>
-			<img src="<?php echo $row['file_name']?>">
-			<button type="submit" name="delete">Delete</button>
-		</div>
 		</div>
 	</div>
 </div>
