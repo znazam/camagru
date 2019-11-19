@@ -18,7 +18,7 @@ echo "awrextcfyvguh";
 	<div id="header">
 		<div class="header_item">
 			<a href="../index.php" style="color: blue; font-size: 300%; margin-left: 10%">HOMEPAGE</a>
-			<a href="../pages/gallery.php" style="margin-left: 20%"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
+			<a href="../pages/gallery.php?page=1" style="margin-left: 20%"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
 			<a href="profileup.php" style="margin-left: 10%"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
 			<a href="images.php" style="margin-left: 10%"><img src="https://www.creativefabrica.com/wp-content/uploads/2018/10/Camera-logo-by-DEEMKA-STUDIO-580x406.jpg" width="40" height="40"></a>
 			<a href="../login/logout.php" style="margin-left: 50%; margin-bottom: 100%"><img class="user_icon" onclick="logOut()" src="https://www.freeiconspng.com/uploads/shutdown-icon-28.png"></a>

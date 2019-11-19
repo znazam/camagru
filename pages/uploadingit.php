@@ -10,8 +10,8 @@
 <body>
 <header>
         <div class="headingss">
-            <a href="gallery.php"><img src="https://static.thenounproject.com/png/18307-200.png" width="100" ></a>
-            <a href="profile.php"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
+            <a href="gallery.php?page=1"><img src="https://static.thenounproject.com/png/18307-200.png" width="100" ></a>
+            <a href="profile.php?page=1"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
             <a href="images.php"><img src="https://www.creativefabrica.com/wp-content/uploads/2018/10/Camera-logo-by-DEEMKA-STUDIO-580x406.jpg" width="40" height="40"></a>
             <a href="../login/logout.php">logout</a>
         </div>

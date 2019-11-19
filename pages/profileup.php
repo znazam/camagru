@@ -17,9 +17,9 @@
                 <div class="header_item">
                 </div>
                 <div class="header_item">
-                    <a href="../pages/gallery.php" style="margin-left: -150%"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
+                    <a href="../pages/gallery.php?page=1" style="margin-left: -150%"><img class="user_icon" src="https://static.thenounproject.com/png/18307-200.png"></a>
                     <div class="header_item" style="display: inline; width: 30px;">
-						<a href="profile.php" style="margin-left: 50%"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
+						<a href="profile.php?page=1" style="margin-left: 50%"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" width="100"></a>
 						<a href="../login/logout.php" style="margin-left: 50%"><img class="user_icon" onclick="logOut()" src="https://www.freeiconspng.com/uploads/shutdown-icon-28.png"></a>
                     </div>
                 </div>
