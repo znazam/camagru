@@ -1,4 +1,8 @@
 <?php session_start();
+if(!$_SESSION['uid'])
+header("Location: ../login/login.php");
+?>
+<?php session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +34,14 @@
 	<?php echo $msg;?>
     <form action="../modal/profileup.php" method="POST">
         <input type="text" name="new_username"placeholder="username" >
-        <button type="submit" name="username_submit">Update</button>
+        <button style="background-color: white" type="submit" name="username_submit">Update</button>
         <br>
         <input type="email" name="new_email"placeholder="email">
-        <button type="submit" name="email_submit">Update</button>
+        <button style="background-color: white" type="submit" name="email_submit">Update</button>
         <br>
         <input type="password" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="new-password">
         <input type="password" name="re_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="re-enter new-password">
-        <button type="submit" name="pass_submit">Update</button>
+        <button style="background-color: white" type="submit" name="pass_submit">Update</button>
 		<br>
 		<p style="color: white; font-size: 50%">Notify me via email about comments?<button type="submit" name="notify"><?php if($_SESSION["notify"] == '0'){echo "yes";}else{echo "no";}?></button></p>
 		<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>

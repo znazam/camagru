@@ -1,7 +1,15 @@
-<html>
-    <head>
-        <title>Upload picture</title>
-		<link rel="stylesheet" href="../main.css">
+<?php session_start();
+if(!$_SESSION['uid'])
+header("Location: ../login/login.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Images</title>
     </head>
     <body>
 		<?php echo $msg;?>
@@ -24,7 +32,7 @@
                     <canvas id="screenshot"></canvas>
                     <img id="captured_one" src="">
                     <img id="omunye" src="">
-                    <button id="take_pic" disabled></button>
+                    <button style="background-color: white" id="take_pic" disabled></button>
                     <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/refresh-01-512.png" id="take_another_one">
                     <form action ="/cama/modal/images.php" id="submit_form" method="POST" enctype="multipart/form-data">
                         <!-- <input id="b_image" type="file" value="browse" accept="image/*" name="b_pic"  onchange="loadFile(event)" style="display: none;"> -->

@@ -1,3 +1,7 @@
+<?php session_start();
+if(!$_SESSION['uid'])
+header("Location: ../login/login.php");
+?>
 <?php
 session_start();
 include '../config/database.php';
@@ -64,7 +68,7 @@ include '../config/database.php';
 							<img src="<?=$row['image']?>" style="width: 600px; height:500%"/>
 							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="post_id" value="<?php echo $row['id'];?>"/><?php endif;?>
 							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="user_id" value="<?php echo $row['user'];?>"/><?php endif;?>
-							<button type="submit" name="delete">Delete</button>
+							<button style="background-color: white" type="submit" name="delete">Delete</button>
 						</form>
 					</div>
 					<?php

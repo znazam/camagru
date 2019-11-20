@@ -1,4 +1,5 @@
 <?php
+include "config/setup.php";
 require_once('config/database.php');
 session_start();
 ?>
@@ -17,9 +18,9 @@ session_start();
         </div>
         <div class = "menu_bar">
             <ul>
-                <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
-				<?php if ($_SESSION['uid']) : ?><a href= "pages/profile.php?page=1" style="margin-right: 40%; margin-top: 10%"><button>Profile</button></a><?php endif;?>
-				<a href= "pages/gallery.php?page=1" style="margin-right: 10%; margin-top: 10%"><button>gallery</button></a>
+                <li class = "active" id="logout"><a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%" ><button style="background-color: white"><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
+				<?php if ($_SESSION['uid']) : ?><a href= "pages/profile.php?page=1" style="margin-right: 40%; margin-top: 10%"><button style="background-color: white">Profile</button></a><?php endif;?>
+				<a href= "pages/gallery.php?page=1" style="margin-right: 10%; margin-top: 10%"><button style="background-color: white">gallery</button></a>
                  </li>
             </ul>
         </div>
