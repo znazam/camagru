@@ -30,6 +30,7 @@
 	  		<p>Email was sent to your address</p>
 			<p>Enter new password here<input type="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></p>
 			<p>Re enter new password here<input type="password" name="newpass"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></p>
+			<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
 			<input type = "submit" value="submit" name="submit">
        </form>
    </body>

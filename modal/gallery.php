@@ -33,20 +33,23 @@ if(isset($_POST['post_comment']))
 	$statement->bindParam(":post", $_POST['post_id']);
 	$statement->bindParam(":content", $_POST['comment']);
 
-	$user = $_POST['user'];
-	$com = $conn->prepare("SELECT email FROM user WHERE id=?");
-	$com->execute(array($user));
-	$email = $com->fetch();
-	var_dump($email);
+	if($_SESSION['notify'] == 1)
+	{
+		$user = $_POST['user'];
+		$com = $conn->prepare("SELECT email FROM user WHERE id=?");
+		$com->execute(array($user));
+		$email = $com->fetch();
+		var_dump($email);
 
-	$person = $_SESSION['username'];
-	$email = $_SESSION['email'];
-	$comment = $_POST['comment'];
-	$subject = "$person commented  on your post";
-	$body = "$person commented  < $comment > on your post";
-	$headers = "MIME-Version: 1.0" . "\n";
-	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
-	$result = mail($email,$subject,$body,$headers);
+		$person = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		$comment = $_POST['comment'];
+		$subject = "$person commented  on your post";
+		$body = "$person commented  < $comment > on your post";
+		$headers = "MIME-Version: 1.0" . "\n";
+		$headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
+		$result = mail($email,$subject,$body,$headers);
+	}
 }
 try
 {

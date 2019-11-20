@@ -1,15 +1,6 @@
 <?php
-// if($_SESSION['username'] != TRUE){
-	//     header("location: ../login/login.php");}
-	?>
-<?php
 	session_start();
 	include '../config/database.php';
-
-	// $ID = $_SESSION['uid'];
-	// $query = $conn->query("SELECT * FROM `images` WHERE `id` = $ID");
-	// $array = $query->fetchall();
-	// $x = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">

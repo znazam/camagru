@@ -29,6 +29,7 @@
 	  		<?php echo $msg;  ?>
 	  		<p>Email will be sent to your address</p>
 			<p>Enter email address here<input type="Text" name="email"/></p>
+			<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
 			<input type = "submit" value="send" name="send">
        </form>
    </body>

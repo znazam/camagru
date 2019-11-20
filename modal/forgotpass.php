@@ -7,8 +7,6 @@ $msg = "";
 $email = $_POST['email'];
 $for = $conn->prepare("SELECT * FROM user WHERE email=?");
 $for->execute(array($email));
-// $user = $for->fetch();
-// var_dump($user);
 
 if($email)
 {
@@ -23,7 +21,7 @@ if($email)
 else
 {
 	$msg = "email does not exist";
-	header("location: /cama/pages/forgot.php");
+	header("location: /cama/pages/forgot.phperror=email does not exist");
 	return;
 }
 ?>

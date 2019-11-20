@@ -8,7 +8,6 @@ $ver->execute(array($code_name));
 $code = $ver->fetch();
 var_dump($code);
 
-// $email = $_GET['email'];
 $email = $code['email'];
 $ver = $conn->prepare("UPDATE user set verified = 1 WHERE email = ?");
 
@@ -24,7 +23,7 @@ if(isset($_POST['submit']))
 		else
 		{
 			$msg = "incorrect code... check mail";
-			header("location: /cama/pages/checkmail.php");
+			header("location: /cama/pages/checkmail.phperror=incorrect code... check mail");
 		}
    }
    catch(PDOException $ex){

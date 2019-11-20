@@ -1,10 +1,8 @@
 <?php
-// Include the database configuration file
 include '../config/database.php';
 $statusMsg = '';
 session_start();
 $username = $_SESSION['username'];
-// File upload path
 $targetDir = "../uploads/";
 $fileName = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $fileName;
@@ -41,6 +39,5 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"]))
 }else{
     $statusMsg = 'Please select a file to upload.';
 }
-// Display status message
 echo $statusMsg;
 ?>

@@ -37,6 +37,7 @@
 			<?php echo $msg;?>
            <p>Email address: <input type="text" name="email"/></p>
            <p>Password: <input  type="password" name="passwd"/></p>
+		   <div><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
            <a href = "../index.php"><input type = "submit"></a>
 			<br/><br/><br/>
 			<a href = "../pages/forgot.php">Forgot password?</a>

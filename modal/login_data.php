@@ -17,6 +17,7 @@ try {
 				$_SESSION["uid"] = $data['id'];
 				$_SESSION["username"] = $data['username'];
 				$_SESSION["email"] = $data['email'];
+				$_SESSION["notify"] = $data['notify'];
 				echo json_encode(["Status" => true]);
 				header("Location: /cama/index.php");
 				exit();
@@ -24,18 +25,24 @@ try {
 			else 
 			{
 				echo "incorrect password or emailaddress";
-				header("Location: /cama/login/login.php?failuretoconnect");
+				header("Location: /cama/login/login.php?error=failuretoconnect");
 				return;
 			}
 			$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
 			header("Location: /cama/login/login.php");
 			exit();
 		}
+		else 
+		{
+			echo "incorrect password or emailaddress";
+			header("Location: /cama/login/login.php?error=failuretoconnect");
+			return;
+		}
 	}
 	catch (PDOException $e)
 	{
 		echo "failed to login: ".$e->getMessage();
-		header("Location: /cama/login/login.php?failure");
+		header("Location: /cama/login/login.php?error=failure");
 		exit();
 	}
 ?>

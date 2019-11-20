@@ -29,7 +29,7 @@
 			if( $existemail->rowCount() == 1 )
 			{
 				$msg = "email is in use";
-				header("location: /cama/login/register.php?emailexists");
+				header("location: /cama/login/register.php?error=emailexists");
 				return;
 			}
 			else
@@ -37,7 +37,7 @@
 				if (empty($password) || empty($confirm_password))
 				{
 					$msg = "password fields need to be filled in";
-					header("location: /cama/login/register.php?passwordmissing");
+					header("location: /cama/login/register.php?error=passwordmissing");
 					return;
 				}
 				else
@@ -60,7 +60,7 @@
 					else
 					{
 						$msg = "passwords must be the same";
-						header("location: /cama/login/register.php?passwordsmustbethesame");
+						header("location: /cama/login/register.php?error=passwordsmustbethesame");
 						return;
 					}
 				}

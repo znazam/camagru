@@ -1,7 +1,6 @@
 <?php
 set_include_path("../");
 include 'config/database.php';
-//require_once("pages/newpass.php");
 $newpass = $_POST['newpass'];
 $password = $_POST['password'];
 $email = $_GET['email'];
@@ -16,23 +15,23 @@ if(isset($_POST['submit']))
 			if ($newpass == $password)
 			{
 				$hshpwd = password_hash($password, PASSWORD_BCRYPT);
-				$for = $conn->prepare("UPDATE user set passwd = '$hshpwd' WHERE email = '$email'");
+				$for = $conn->prepare("UPDATE user set passwd = ? WHERE email = ?");
 				var_dump($for);
-				$for->execute();
+				$for->execute(array($hshpwd, $email));
 				header("location: /cama/login/login.php");
 				return;
 			}
 			else
 			{
 				$msg = "passwords must match";
-				header("location: /cama/pages/newpass.php");
+				header("location: /cama/pages/newpass.phperror=passwords must match");
 				return;
 			}
 		}
 		else
 		{
 			$msg = "passwords fields must be filled";
-			header("location: /cama/pages/forgot.php");
+			header("location: /cama/pages/forgot.phperror=passwords fields must be filled");
 			return;
 		}
 	}

@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +38,9 @@
         <input type="password" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="new-password">
         <input type="password" name="re_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="re-enter new-password">
         <button type="submit" name="pass_submit">Update</button>
+		<br>
+		<p style="color: white; font-size: 50%">Notify me via email about comments?<button type="submit" name="notify"><?php if($_SESSION["notify"] == '0'){echo "yes";}else{echo "no";}?></button></p>
+		<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
     </form>
     <hr>
     <div id="footer">

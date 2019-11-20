@@ -1,39 +1,3 @@
-// (function () {
-// 	var video = document.getElementById('video'),
-// 	canvas = document.getElementById('canvas'),
-// 	context = canvas.getContext('2d');
-// 	photo = document.getElementById('photo'),
-// 	vendorURL = window.URL || window.webkitURL;
-// 	navigator.getMedia =	navigator.getUserMedia ||
-// 	navigator.webkitGetUserMedia ||
-// 	navigator.mozGetUSerMedia ||
-// 	navigator.msGetUserMedia;
-// 	navigator.getMedia({
-// 		video: true,
-// 		audio: false
-// 	},    function (stream) {
-// 		video.srcObject = stream;
-// 		video.play()
-// 	},    function (error) {
-// 		console.log('error');
-// 	});
-// 	var capture = document.getElementById('capture');
-// 	capture.addEventListener('click', function() {
-// 		context.drawImage(video, 0, 0, 400, 300);
-// 	})
-	// var upload = document.getElementById('upload');
-	// upload.addEventListener('click', function() {
-	// 	var request = new XMLHttpRequest();
-	// 	request.onload = () => {
-	// 		console.log(request.responseText);
-	// 	}
-
-	// 	request.open("POST", "/cama/modal/images.php");
-	// 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	// 	request.send("photo=" + canvas.toDataURL());
-	// })
-//  }) ();
-
 function hasGetUserMedia() 
 {
 return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -57,13 +21,17 @@ const frame = document.getElementById('omunye');
 const chosenFrame = document.getElementById('chosen_frame');
 const origin = document.getElementById('origin');
 frame.style.display = "none";
+video.oncanplay = () => {
+	shoot.disabled = false;
+};
 if (hasGetUserMedia())
 {
 navigator.mediaDevices.getUserMedia(constraints).
-then((stream) => {video.srcObject = stream});
+then((stream) => {
+	video.srcObject = stream; 
+});
 navigator.mediaDevices.getUserMedia(constraints).
 then((stream) => {video.srcObject = stream});
-//When you take a picture
 shoot.onclick = video.onclick = function()
 {
 	canvas.width = video.videoWidth;
@@ -74,6 +42,7 @@ shoot.onclick = video.onclick = function()
 	img.style.display = "block";
 	video.style.display = "none";
 	origin.value = "cam";
+	post_it.disabled = false;
 };
 re_shoot.onclick = function()
 {
@@ -163,9 +132,6 @@ function showSnackbar(message) {
 }
 
 window.onscroll = function(ev) {
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-        alert("you're at the bottom of the page");
-    }
 }
 // function logOut()
 // {

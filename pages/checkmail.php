@@ -29,6 +29,7 @@
 	  		<?php echo $msg;  ?>
 	  		<p>Check your email for verification Code</p>
 			<p>Enter Verification Code Here <input type="Text" name="Code_Name"/></p>
+			<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
 			<input type = "submit" value="submit" name="submit">
        </form>
    </body>

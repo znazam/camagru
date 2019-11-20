@@ -6,6 +6,13 @@ error_reporting(E_ALL);
 session_start();
 $msg = "";
 
+$_SESSION['uid'] = $user;
+$curemail = $_SESSION["email"];
+$n = $conn->prepare("SELECT * FROM user WHERE email=?");
+$n->execute(array($curemail));
+$data = $n->fetch();
+var_dump($data);
+
 if($_SESSION['username'] != TRUE){
 	header("location: ../login/login.php");
 	$msg = "must login first";
@@ -13,22 +20,32 @@ if($_SESSION['username'] != TRUE){
 $old_username = $_SESSION['username'];
 if(isset($_POST['username_submit'])){
     $username = $_POST['new_username'];
-    $stmt = $conn->prepare("UPDATE `user` SET `username` = '$username' WHERE username = '$old_username'");
-    $stmt->execute();
+    $name = $conn->prepare("UPDATE `user` SET `username` = ? WHERE id = ?");
+    $name->execute(array($username, $_SESSION['uid']));
     $_SESSION['username'] = $username;
 }
-//$old_email = $_SESSION['email'];
 if(isset($_POST['email_submit'])){
     $email = $_POST['new_email'];
-    $stmt = $conn->prepare("UPDATE `user` SET `email` = '$email' WHERE `username` = '$old_username'");
-    $stmt->execute();
+    $mail = $conn->prepare("UPDATE `user` SET `email` = ? WHERE `id` = ?");
+    $mail->execute(array($email, $_SESSION['uid']));
     $_SESSION['email'] = $email;
+}
+if(isset($_POST['notify'])){
+	if($_SESSION['notify'] == '0')
+		$notify = '1';
+	else
+		$notify = '0';
+	$curemail = $_SESSION["email"];
+	$no = $conn->prepare("UPDATE `user` SET `notify` = :notify WHERE `id` = `$user`");
+	$no->bindParam(":notify", $notify, PDO::PARAM_INT);
+	$no->execute();
+	$_SESSION["notify"] = $notify;
 }
 if(isset($_POST['pass_submit']) && ($_POST['new_password'] == $_POST['re_password'])){
     $password = $_POST['new_password'];
     $hashed = password_hash($password , PASSWORD_BCRYPT);
-    $stmt = $conn->prepare("UPDATE `user` SET `passwd` = '$hashed' WHERE `username` = '$old_username'");
-    $stmt->execute();
+    $stmt = $conn->prepare("UPDATE `user` SET `passwd` = '' WHERE `username` = ?");
+    $stmt->execute(array($hashed, $_SESSION['uid']));
 }
 else
 {
