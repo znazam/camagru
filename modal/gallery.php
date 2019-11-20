@@ -5,19 +5,19 @@ require_once("config/database.php");
 
 if(isset($_POST['postlike']))
 {
-	$statement = $conn->prepare("DELETE FROM `likes` WHERE uploaderID = :user AND postID = :post");
-	$statement->bindParam(":user", $_SESSION['uid']);
-	$statement->bindParam(":post", $_POST['post_id']);
-	$statement->execute();
-	if ($statement->rowCount() == 0)
+	$del = $conn->prepare("DELETE FROM `likes` WHERE uploaderID = :user AND postID = :post");
+	$del->bindParam(":user", $_SESSION['uid']);
+	$del->bindParam(":post", $_POST['post_id']);
+	$del->execute();
+	if ($del->rowCount() == 0)
 	{
-		$statement = $conn->prepare("INSERT INTO `$db_name`.`likes`(`uploaderID`, `postID`) VALUES (:user, :post)");
-		$statement->bindParam(":user", $_SESSION['uid']);
-		$statement->bindParam(":post", $_POST['post_id']);
+		$del = $conn->prepare("INSERT INTO `$db_name`.`likes`(`uploaderID`, `postID`) VALUES (:user, :post)");
+		$del->bindParam(":user", $_SESSION['uid']);
+		$del->bindParam(":post", $_POST['post_id']);
 	}
 	try
 	{
-		$statement->execute();
+		$del->execute();
 		header("Location: ../pages/gallery.php?page=".$_GET['returnto']);
 	}
 	catch(PDOExeption $e)

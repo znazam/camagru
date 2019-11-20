@@ -15,7 +15,7 @@ include '../config/database.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
 </head>
-<body>
+<body width = "100%" style = "font-size: 1vw">
 <header>
 <div class="logo">
 	</div>

@@ -24,7 +24,7 @@
 		</style>
 		<title>checkmail</title>
     </head>
-   <body>
+   <body width = "100%" style = "font-size: 1vw">
       <form action="../modal/verify.php" method="POST">
 	  		<?php echo $msg;  ?>
 	  		<p>Check your email for verification Code</p>

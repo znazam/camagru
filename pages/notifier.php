@@ -29,7 +29,7 @@
 		</style>
 		<title>newpassword</title>
     </head>
-   <body>
+   <body width = "100%" style = "font-size: 1vw">
       <form action="newpass.php" method="POST">
 	  		<p>Email was sent to your address</p>
        </form>

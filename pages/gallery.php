@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery</title>
 </head>
-<body>
+<body width = "100%" style = "font-size: 1vw">
 <header>
 <div class="logo">
 	</div>
@@ -20,7 +20,8 @@
         	<a href="../index.php" style="color: blue; font-size: 300%; margin-left: 10%">HOMEPAGE</a>
             <?php if ($_SESSION['uid']) : ?><a href= "profile.php?page=1" style="margin-right: 40%; margin-top: 10%"><img src="https://image.shutterstock.com/image-vector/user-account-profile-circle-flat-260nw-467503004.jpg" width="100" height="100"></a><?php endif;?>
 			<?php if ($_SESSION['uid']) : ?><a href= "images.php" style="margin-right: 40%; margin-top: 10%"><img src="https://www.creativefabrica.com/wp-content/uploads/2018/10/Camera-logo-by-DEEMKA-STUDIO-580x406.jpg" width="40" height="40"></a><?php endif;?>
-			<a href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%"><button style="background-color: white"><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
+			<a style="background-color: white" 
+			href = "/cama/login/<?php echo $_SESSION['uid'] ? "logout" : "login"?>.php" style="margin-right: 40%"><button style="background-color: white"><?php echo $_SESSION['uid'] ? "Logout" : "Login"?></button></a>
 		</div>
 	</div>
 </div>
@@ -56,14 +57,14 @@
 					$statement = $conn->prepare("SELECT COUNT(*) FROM likes WHERE postID=?;");
 					$statement->execute(array($row['id']));
 					$like_count = $statement->fetch()[0];
-					$like_count;
+					//$like_count;
 					?>
 					<div class="booth" style="width:600px">
 						<form action ="/cama/modal/gallery.php?returnto=<?=$_GET['page']?>" id="submit_form" method="POST" enctype="multipart/form-data">
 							<img src="<?=$row['image']?>" style="width: 500px; height:400%"/>
 							<p style="color: white"><?php echo "Likes: "."$like_count";?></p>
 							<?php if ($_SESSION['uid']) : ?><textarea id="img_caption" type="text" name="comment"></textarea><?php endif;?>
-							<?php if ($_SESSION['uid']) : ?><button style="background-color: white" name="postlike" style="width: 10%; height: 50px; margin-top: -70%"><img id="like" style="width: 130%; height: 50px; margin-left: -15%; margin-top: -10%" src="https://i.ytimg.com/vi/sx6Bx29lFWg/hqdefault.jpg"/></button><?php endif;?>
+							<?php if ($_SESSION['uid']) : ?><button style="background-color: white; width: 10%; height: 50%; margin-top: -70%" name="postlike" >Like</button><?php endif;?>
 							<?php if ($_SESSION['uid']) : ?><input id="post_pic" name="post_comment" type="submit" value="Upload" style="margin-top: 3%"><?php endif;?>
 							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="post_id" value="<?php echo $row['id'];?>"/><?php endif;?>
 							<?php if ($_SESSION['uid']) : ?><input type='hidden' name="user_id" value="<?php echo $row['user'];?>"/><?php endif;?> 

@@ -12,7 +12,7 @@ header("Location: ../login/login.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body width = "100%" style = "font-size: 1vw">
 <header>
         <div class="headingss">
             <a href="gallery.php?page=1"><img src="https://static.thenounproject.com/png/18307-200.png" width="100" ></a>
@@ -23,8 +23,8 @@ header("Location: ../login/login.php");
     </header>
 <form action="../modal/upload.php" method="post" enctype="multipart/form-data">
     Select Image File to Upload:
-    <input type="file" name="file" required>
-    <input type="submit" name="submit" value="Upload" >
+    <input type="file" name="file" required style="background-color: white">
+    <input type="submit" name="submit" value="Upload"  style="background-color: white">
     <br>
     <title>Caption</title>
     <textarea id="img_caption" type="text" name="caption"></textarea>

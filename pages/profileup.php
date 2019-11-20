@@ -13,7 +13,7 @@ header("Location: ../login/login.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>profile</title>
 </head>
-<body>
+<body width = "100%" style = "font-size: 1vw">
 <header>
         <div class="logo">
         <a href="../index.php" style="color: blue; font-size: 300%">HOMEPAGE</a>

@@ -11,7 +11,7 @@ header("Location: ../login/login.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Images</title>
     </head>
-    <body>
+    <body width = "100%" style = "font-size: 1vw">
 		<?php echo $msg;?>
             <div id="header">
                 <a href="../index.php" style="color: blue; font-size: 300%">Homepage</a>

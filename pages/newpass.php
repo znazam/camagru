@@ -33,7 +33,7 @@ header("Location: ../login/login.php");
 		</style>
 		<title>newpassword</title>
     </head>
-   <body>
+   <body width = "100%" style = "font-size: 1vw">
       <form action="/cama/modal/newpassback.php" method="POST">
 	  		<?php echo $msg;  ?>
 	  		<p>Email was sent to your address</p>

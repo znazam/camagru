@@ -24,7 +24,7 @@
 		</style>
 		<title>forgot password</title>
     </head>
-   <body>
+   <body width = "100%" style = "font-size: 1vw">
       <form action="/cama/modal/forgotpass.php" method="POST">
 	  		<?php echo $msg;  ?>
 	  		<p>Email will be sent to your address</p>
