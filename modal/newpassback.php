@@ -5,7 +5,6 @@ $newpass = $_POST['newpass'];
 $password = $_POST['password'];
 $email = $_GET['email'];
 
-$msg = "";
 if(isset($_POST['submit']))
 {
 	try
@@ -23,22 +22,19 @@ if(isset($_POST['submit']))
 			}
 			else
 			{
-				$msg = "passwords must match";
-				header("location: /cama/pages/newpass.phperror=passwords must match");
+				header("location: /cama/pages/newpass.php?error=passwords must match");
 				return;
 			}
 		}
 		else
 		{
-			$msg = "passwords fields must be filled";
-			header("location: /cama/pages/forgot.phperror=passwords fields must be filled");
+			header("location: /cama/pages/forgot.php?error=passwords fields must be filled");
 			return;
 		}
 	}
 	catch(PDOException $ex)
 	{
-	$msg = "error";
-	echo $msg;
+		echo "Error: ".$e->message();
 	}
 }
 ?>

@@ -26,7 +26,6 @@
     </head>
    <body width = "100%" style = "font-size: 1vw">
       <form action="../modal/verify.php" method="POST">
-	  		<?php echo $msg;  ?>
 	  		<p>Check your email for verification Code</p>
 			<p>Enter Verification Code Here <input type="Text" name="Code_Name"/></p>
 			<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>

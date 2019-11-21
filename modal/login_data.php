@@ -4,7 +4,6 @@
 	require_once("config/database.php");
 	$email = $_POST['email'];
 	$loginpass = $_POST['passwd'];
-	$msg = "";
 
 try {
 		$stmt = $conn->prepare("SELECT * FROM user WHERE email=?");

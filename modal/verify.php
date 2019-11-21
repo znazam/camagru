@@ -11,7 +11,6 @@ var_dump($code);
 $email = $code['email'];
 $ver = $conn->prepare("UPDATE user set verified = 1 WHERE email = ?");
 
-$msg = "";
 if(isset($_POST['submit']))
 {
 	try{
@@ -22,13 +21,11 @@ if(isset($_POST['submit']))
 		}
 		else
 		{
-			$msg = "incorrect code... check mail";
 			header("location: /cama/pages/checkmail.phperror=incorrect code... check mail");
 		}
    }
    catch(PDOException $ex){
-       $msg = "error";
-       echo $msg;
+		echo "Error: ".$e->message();
    }
 }
 ?>

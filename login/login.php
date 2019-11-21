@@ -34,7 +34,6 @@
     </head>
    <body>
 	  <center><form action="../modal/login_data.php" method="POST">
-			<?php echo $msg;?>
            <p>Email address: <input type="text" name="email"/></p>
            <p>Password: <input  type="password" name="passwd"/></p>
 		   <div><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>

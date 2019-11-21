@@ -40,10 +40,6 @@ body {
 	display:none;
 }
 
-#side
-{
-	background-color: black;
-}
 #header
 {
 	position: fixed;
@@ -161,8 +157,9 @@ body {
 }
 #side
 {
-	top: 120px;
-	right: 50px;
+	/* background-color: black; */
+	top: 120%;
+	right: 10%;
 	border-radius: 10px;
 	display: grid;
 	grid-template-columns: auto auto auto;

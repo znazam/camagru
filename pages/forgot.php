@@ -26,7 +26,6 @@
     </head>
    <body width = "100%" style = "font-size: 1vw">
       <form action="/cama/modal/forgotpass.php" method="POST">
-	  		<?php echo $msg;  ?>
 	  		<p>Email will be sent to your address</p>
 			<p>Enter email address here<input type="Text" name="email"/></p>
 			<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>

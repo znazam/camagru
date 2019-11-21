@@ -1,6 +1,7 @@
 <?php session_start();
 if(!$_SESSION['uid'])
-header("Location: ../login/login.php");
+    header("Location: ../login/login.php");
+include '../config/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,6 @@ header("Location: ../login/login.php");
     <title>Images</title>
     </head>
     <body width = "100%" style = "font-size: 1vw">
-		<?php echo $msg;?>
             <div id="header">
                 <a href="../index.php" style="color: blue; font-size: 300%">Homepage</a>
                 <div class="header_item">
@@ -52,8 +52,27 @@ header("Location: ../login/login.php");
                 </div>
             </div>
         </div>
+        <?php
+            $us = $_SESSION['uid'];
+            $pre = $conn->prepare("SELECT * FROM `images` WHERE `user` = ? ORDER BY `creationDate` DESC LIMIT 5");
+            $pre->execute(array($us));
+            if($pre->rowCount() > 0)
+            {
+                $s = $conn->prepare("SELECT * FROM `images` where `user` = ?");
+                $s->execute(array($us));
+                while($row=$pre->fetch(PDO::FETCH_ASSOC))
+                {
+                    ?>
+                    <div id="booth">
+                        <img src="<?=$row['image']?>" style="width: 600px; height:500%"/>
+                    </div>
+                    <?php
+                }
+            }
+        ?>
         <div id="snackbar"></div>
-		<script type="text/javascript" src="../js/photo.js"></script>
+        <script type="text/javascript" src="../js/photo.js"></script>
+        <hr>
 		<div id="footer">
             <p id="f_msg" style="color: white">This website is proundly provided to you by Zaid Nazam</p>
             <p id="cr" style="color: white">znazam 2019</p>

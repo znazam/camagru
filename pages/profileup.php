@@ -31,7 +31,6 @@ header("Location: ../login/login.php");
                 </div>
     </header>
 	<h1>Welcome <?php echo $_SESSION['username']; ?>
-	<?php echo $msg;?>
     <form action="../modal/profileup.php" method="POST">
         <input type="text" name="new_username"placeholder="username" >
         <button style="background-color: white" type="submit" name="username_submit">Update</button>

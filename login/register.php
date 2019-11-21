@@ -30,8 +30,8 @@
    <body>
       <form action="../modal/create_user.php" method="POST">
 	  		<p>Username  <input type="text" name="username" minlength="5" required/></p>
-        	<p>First Name  <input type="text" name="firstname" minlength="5" required/></p>
-        	<p>Last Name  <input  type="text" name="lastname" minlength="5" required/></p>
+        	<p>First Name  <input type="text" name="firstname" minlength="2" required/></p>
+        	<p>Last Name  <input  type="text" name="lastname" minlength="2" required/></p>
         	<p>Email   <input type="email" name = "email" required/></p>
         	<p>Password   <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></p>
         	<p>Retype Password  <input type="password" name="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></p>

@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-$msg = "";
 
 $user = $_SESSION['uid'];
 $curemail = $_SESSION["email"];
@@ -13,8 +12,7 @@ $n->execute(array($curemail));
 $data = $n->fetch();
 
 if($_SESSION['username'] != TRUE){
-	header("location: ../login/login.php");
-	$msg = "must login first";
+	header("location: ../login/login.php?error=must login first");
 }
 $old_username = $_SESSION['username'];
 if(isset($_POST['username_submit'])){
@@ -50,8 +48,7 @@ if(isset($_POST['pass_submit']) && ($_POST['new_password'] == $_POST['re_passwor
 }
 else
 {
-	header("Location: ../pages/profile.php");
-	$msg = "passwords must match";
+	header("Location: ../pages/profile.php?error=passwords must match");
 	die;
 }
 header("Location: ../pages/profile.php");
