@@ -10,15 +10,27 @@ try {
 		$stmt->execute(array($email));
 		$data = $stmt->fetch();
 		var_dump($data);
-		if($data)
+		if($data['verified'] == 1)
 		{
-			if (password_verify($loginpass, $data["passwd"])){
-				$_SESSION["uid"] = $data['id'];
-				$_SESSION["username"] = $data['username'];
-				$_SESSION["email"] = $data['email'];
-				$_SESSION["notify"] = $data['notify'];
-				echo json_encode(["Status" => true]);
-				header("Location: /cama/index.php");
+			if($data)
+			{
+				if (password_verify($loginpass, $data["passwd"])){
+					$_SESSION["uid"] = $data['id'];
+					$_SESSION["username"] = $data['username'];
+					$_SESSION["email"] = $data['email'];
+					$_SESSION["notify"] = $data['notify'];
+					echo json_encode(["Status" => true]);
+					header("Location: /cama/index.php");
+					exit();
+				}
+				else 
+				{
+					echo "incorrect password or emailaddress";
+					header("Location: /cama/login/login.php?error=failuretoconnect");
+					return;
+				}
+				$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
+				header("Location: /cama/login/login.php");
 				exit();
 			}
 			else 
@@ -27,14 +39,10 @@ try {
 				header("Location: /cama/login/login.php?error=failuretoconnect");
 				return;
 			}
-			$stmt->execute(array($username, $firstname, $lastname, $email, $hshpwd));
-			header("Location: /cama/login/login.php");
-			exit();
 		}
-		else 
+		else
 		{
-			echo "incorrect password or emailaddress";
-			header("Location: /cama/login/login.php?error=failuretoconnect");
+			header("Location: /cama/login/login.php?error=user not verified");
 			return;
 		}
 	}

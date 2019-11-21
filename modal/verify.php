@@ -21,7 +21,7 @@ if(isset($_POST['submit']))
 		}
 		else
 		{
-			header("location: /cama/pages/checkmail.phperror=incorrect code... check mail");
+			header("location: /cama/pages/checkmail.php?error=incorrect code or didn't submit code... check mail");
 		}
    }
    catch(PDOException $ex){

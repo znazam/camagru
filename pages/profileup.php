@@ -43,7 +43,7 @@ header("Location: ../login/login.php");
         <button style="background-color: white" type="submit" name="pass_submit">Update</button>
 		<br>
 		<p style="color: white; font-size: 50%">Notify me via email about comments?<button type="submit" name="notify"><?php if($_SESSION["notify"] == '0'){echo "yes";}else{echo "no";}?></button></p>
-		<div style="color:white"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
+		<div style="color:Red"><?=isset($_GET['error']) ? $_GET['error'] : ""?></div>
     </form>
     <hr>
     <div id="footer">
