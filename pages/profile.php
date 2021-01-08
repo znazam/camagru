@@ -1,4 +1,8 @@
-<?php session_start();
+<?php 
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 if(!$_SESSION['uid'])
 header("Location: ../login/login.php");
 ?>

@@ -1,6 +1,9 @@
 <?php
 require_once("../config/database.php");
-session_start();
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 if(!$_SESSION['username']){
 	header("location: ../login/login.php");
 	die;

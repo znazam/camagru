@@ -1,7 +1,10 @@
 <?php
 include '../config/database.php';
 $statusMsg = '';
-session_start();
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 $username = $_SESSION['username'];
 $targetDir = "../uploads/";
 $fileName = basename($_FILES["file"]["name"]);

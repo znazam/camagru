@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 set_include_path("../");
 require_once("config/database.php");
 
